@@ -3,11 +3,28 @@
 }
 
 body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
+    flex-direction: column;
+    gap: 3rem;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
+}
+
+button {
+    background-color: lightgray;
+    border: 3px solid black;
+    border-radius: 4px;
+    font-size: x-large;
+    padding: 1rem 2rem;
+}
+
+button:active {
+    background-color: gray;
+    transform: translateY(2px);
+    box-shadow: none;
 }
 
 #container {
@@ -27,7 +44,3 @@ body {
     border: 1px solid black;
     flex: 1;
 }
-
-/* .col:hover {
-    background-color: black;
-} */
