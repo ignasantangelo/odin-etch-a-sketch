@@ -2,22 +2,32 @@
     box-sizing: border-box;
 }
 
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
 #container {
     display: flex;
     flex-direction: column;
     border: 1px solid black;
-    width: fit-content;
+    width: 960px;
+    height: 960px;
 }
 
 .row {
-    height: 2rem;
     display: flex;
-    width: fit-content;
+    flex: 1;
 }
 
 .col {
     border: 1px solid black;
-    width: 2rem;
-    height: 2rem;
-    flex: none;
+    flex: 1;
+}
+
+.col:hover {
+    background-color: black;
 }
