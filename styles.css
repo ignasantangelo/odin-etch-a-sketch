@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width: fit-content;
+}
+
+.row {
+    height: 2rem;
+    display: flex;
+    width: fit-content;
+}
+
+.col {
+    border: 1px solid black;
+    width: 2rem;
+    height: 2rem;
+    flex: none;
+}
