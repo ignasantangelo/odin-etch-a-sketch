@@ -41,8 +41,12 @@ function getUserSize(message, def) {
     return userSize;
 }
 
-container.addEventListener('mouseenter', (e) => {
+container.addEventListener('mouseover', (e) => {
     if (e.target.classList.contains('col')) {
+        let currentOpacity = Number(e.target.style.opacity) || 0;
+        if (currentOpacity < 1) {
+            e.target.style.opacity = currentOpacity + 0.1;
+        }
         e.target.style.backgroundColor = setRandomColor();
     }
 }, true);
