@@ -4,6 +4,14 @@ const button = document.getElementById('select-size');
 
 let gridSize = 16;
 
+function setRandomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
 function createGrid(size) {
     container.replaceChildren();
 
@@ -21,12 +29,6 @@ function createGrid(size) {
     }
 }
 
-container.addEventListener('mouseenter', (e) => {
-    if (e.target.classList.contains('col')) {
-        e.target.style.backgroundColor = 'black';
-    }
-}, true);
-
 function getUserSize(message, def) {
     let userSize = window.prompt(message, def);
 
@@ -38,6 +40,12 @@ function getUserSize(message, def) {
     }
     return userSize;
 }
+
+container.addEventListener('mouseenter', (e) => {
+    if (e.target.classList.contains('col')) {
+        e.target.style.backgroundColor = setRandomColor();
+    }
+}, true);
 
 button.addEventListener('click', () => {
     createGrid(getUserSize('Choose the size of the grid (max. 100)', '16'));

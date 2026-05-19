@@ -43,4 +43,5 @@ button:active {
 .col {
     border: 1px solid black;
     flex: 1;
+    background-color: orange;
 }
