@@ -1,24 +1,46 @@
 const container = document.getElementById('container');
+const cols = document.querySelectorAll('.col');
+const button = document.getElementById('select-size');
 
-const size = 100;
+let gridSize = 16;
 
-for (let i = 1; i <= size; i++) {
-    let rowDiv = document.createElement('div');
-    rowDiv.className = 'row';
+function createGrid(size) {
+    container.replaceChildren();
 
-    for (let j = 1; j <= size; j++) {
-        let colDiv = document.createElement('div');
-        colDiv.className = 'col';
+    for (let i = 1; i <= size; i++) {
+        let rowDiv = document.createElement('div');
+        rowDiv.className = 'row';
 
-        rowDiv.appendChild(colDiv);
+        for (let j = 1; j <= size; j++) {
+            let colDiv = document.createElement('div');
+            colDiv.className = 'col';
+
+            rowDiv.appendChild(colDiv);
+        }
+        container.appendChild(rowDiv);
     }
-    container.appendChild(rowDiv);
 }
 
-const cols = document.querySelectorAll('.col');
+container.addEventListener('mouseenter', (e) => {
+    if (e.target.classList.contains('col')) {
+        e.target.style.backgroundColor = 'black';
+    }
+}, true);
 
-cols.forEach((item, index) => {
-    item.addEventListener('mouseenter', () => {
-        item.style.backgroundColor = 'black';
-    });
+function getUserSize(message, def) {
+    let userSize = window.prompt(message, def);
+
+    if (userSize > 100) {
+        return getUserSize('ERROR: The maximum size is 100.\nChoose the size of the grid (max. 100)', '16');
+    }
+    else if (userSize == null) {
+        return 16;
+    }
+    return userSize;
+}
+
+button.addEventListener('click', () => {
+    createGrid(getUserSize('Choose the size of the grid (max. 100)', '16'));
 })
+
+createGrid(16);
