@@ -30,15 +30,17 @@ function createGrid(size) {
 }
 
 function getUserSize(message, def) {
-    let userSize = window.prompt(message, def);
+  const raw = prompt(message, def);
 
-    if (userSize > 100) {
-        return getUserSize('ERROR: The maximum size is 100.\nChoose the size of the grid (max. 100)', '16');
-    }
-    else if (userSize == null) {
-        return 16;
-    }
-    return userSize;
+  if (raw === null) return 16;
+
+  const n = parseInt(raw, 10);
+
+  if (Number.isNaN(n) || n < 1 || n > 100) {
+    return getUserSize('Please enter a number 1–100', def);
+  }
+  
+  return n;
 }
 
 container.addEventListener('mouseover', (e) => {
@@ -49,7 +51,7 @@ container.addEventListener('mouseover', (e) => {
         }
         e.target.style.backgroundColor = setRandomColor();
     }
-}, true);
+});
 
 button.addEventListener('click', () => {
     createGrid(getUserSize('Choose the size of the grid (max. 100)', '16'));
